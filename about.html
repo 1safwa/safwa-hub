@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نبذة عن صفوى</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  :root{
+    --bg:#FDFAF4;
+    --card:#FFFFFF;
+    --sand:#F0EDE4;
+    --ink:#2C1A0E;
+    --ink-soft:#6B5A47;
+    --gold:#C9A24B;
+    --emerald:#1A6644;
+    --line:rgba(44,26,14,.09);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Tajawal',sans-serif;
+    line-height:1.9;
+  }
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:1.5rem 2.2rem;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:1.05rem;color:var(--ink);text-decoration:none}
+  .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--emerald)}
+  .back{font-size:.85rem;color:var(--ink-soft);text-decoration:none;display:flex;align-items:center;gap:5px}
+  .back:hover{color:var(--emerald)}
+
+  main{max-width:760px;margin:0 auto;padding:1rem 1.5rem 4rem}
+  .art-title{font-weight:800;font-size:clamp(1.7rem,4vw,2.3rem);margin-bottom:.6rem}
+  .art-eyebrow{font-size:.82rem;color:var(--emerald);font-weight:700;margin-bottom:.8rem;display:block}
+  .art-lead{font-size:1.05rem;color:var(--ink-soft);margin-bottom:2.2rem;max-width:600px}
+
+  h2{font-size:1.15rem;font-weight:800;margin:2.2rem 0 .8rem;color:var(--ink)}
+  p{font-size:.96rem;color:var(--ink);margin-bottom:1rem;max-width:640px}
+  p.muted{color:var(--ink-soft);font-size:.85rem}
+
+  .map-card{
+    margin:1.5rem 0 2rem;
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow:0 1px 3px rgba(44,26,14,.05);
+  }
+  #map{height:340px;width:100%}
+  .map-caption{
+    background:var(--card);
+    padding:.9rem 1.2rem;
+    font-size:.8rem;
+    color:var(--ink-soft);
+    border-top:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .map-caption a{color:var(--emerald);font-weight:700;text-decoration:none}
+
+  .note{
+    background:var(--sand);
+    border-radius:14px;
+    padding:1.1rem 1.3rem;
+    font-size:.82rem;
+    color:var(--ink-soft);
+    margin-top:2.5rem;
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a class="brand" href="index.html"><span class="dot"></span>صفوى هنا</a>
+    <a class="back" href="index.html">→ الرئيسية</a>
+  </div>
+
+  <main>
+    <span class="art-eyebrow">نبذة</span>
+    <h1 class="art-title">صفوى: مدينة الساحل والنخيل</h1>
+    <p class="art-lead">جولة سريعة تتعرف من خلالها على موقع صفوى، وهويتها، وما يميزها بين مدن الساحل الشرقي.</p>
+
+    <h2>الموقع</h2>
+    <p>تقع صفوى في المنطقة الشرقية من المملكة العربية السعودية، ضمن محافظة القطيف، على الساحل الغربي للخليج العربي، بين مدينتي القطيف والجبيل. موقعها الساحلي جعلها منذ القدم نقطة التقاء بين البحر والبر، وأثّر في نمط حياة أهلها وحرفهم عبر الأجيال.</p>
+
+    <div class="map-card">
+      <div id="map"></div>
+      <div class="map-caption">
+        <span>26.657°N, 49.947°E — الساحل الشرقي للمملكة</span>
+        <a href="https://www.google.com/maps?q=26.6572616,49.9473909" target="_blank" rel="noopener">فتح في خرائط Google ↗</a>
+      </div>
+    </div>
+
+    <h2>الإرث والهوية</h2>
+    <p>ارتبطت صفوى تاريخياً بالبحر ارتباطاً وثيقاً؛ فقد عاش أهلها على الغوص على اللؤلؤ وصيد الأسماك قبل عصر النفط، إلى جانب زراعة النخيل التي تشتهر بها الواحات الساحلية في المنطقة الشرقية. هذا المزيج بين البحر والنخيل شكّل هوية المدينة وطبع حياة أهلها بالصبر والتكافل.</p>
+
+    <h2>الحاضر</h2>
+    <p>شهدت صفوى خلال العقود الأخيرة نمواً عمرانياً وسكانياً ملحوظاً، لتصبح من المدن الحيوية ضمن النسيج العمراني للمنطقة الشرقية، مستفيدة من قربها من مدينتي الدمام والجبيل الصناعيتين. ومع هذا التطور، حافظ أهلها على تماسكهم الاجتماعي وعاداتهم، مع انفتاح متزايد على مبادرات التنمية والمشاركة المجتمعية.</p>
+
+    <h2>أبناء صفوى</h2>
+    <p>من أبرز ما تراهن عليه صفوى اليوم هو طاقاتها الشابة المنجزة في مختلف المجالات — العلمية والرياضية والدينية والاجتماعية — وهو ما تحتفي به مبادرة <a href="https://athar.1safwa.com" style="color:var(--emerald);font-weight:700;text-decoration:none">أثر+</a> عاماً بعد عام.</p>
+
+    <div class="note">
+      هذا المقال نبذة عامة تمهيدية عن المدينة، ونرحّب بأي إضافة أو تصحيح من أبناء صفوى لإثرائه أكثر.
+    </div>
+  </main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  const map = L.map('map', {scrollWheelZoom:false}).setView([26.6572616, 49.9473909], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors',
+    maxZoom: 18
+  }).addTo(map);
+  const goldIcon = L.divIcon({
+    className: '',
+    html: '<div style="width:16px;height:16px;border-radius:50%;background:#C9A24B;border:3px solid #FFFFFF;box-shadow:0 1px 4px rgba(0,0,0,.35)"></div>',
+    iconSize: [16,16],
+    iconAnchor: [8,8]
+  });
+  L.marker([26.6572616, 49.9473909], {icon: goldIcon}).addTo(map)
+    .bindPopup('<b style="font-family:Tajawal,sans-serif">صفوى</b>').openPopup();
+</script>
+
+</body>
+</html>
