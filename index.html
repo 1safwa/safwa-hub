@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صفوى — بوابة المشاريع الرقمية</title>
+<meta name="description" content="بوابة صفوى الرقمية — دليل صفوى وأثر+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rakkas&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E2B33;
+    --ink-2:#153C46;
+    --sand:#F4EEDD;
+    --sand-dim:#E4DBC2;
+    --gold:#C9A24B;
+    --clay:#B85C35;
+    --line:rgba(244,238,221,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    background:var(--ink);
+    color:var(--sand);
+    font-family:'Tajawal',sans-serif;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    overflow-x:hidden;
+  }
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:1.6rem 2.2rem;
+    position:relative;
+    z-index:5;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Rakkas',serif;
+    font-size:1.15rem;
+    color:var(--sand);
+    letter-spacing:.5px;
+  }
+  .brand .dot{
+    width:9px;height:9px;border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 0 3px rgba(201,162,75,.18);
+  }
+  .topbar .tagline{
+    font-size:.78rem;
+    color:var(--sand);
+    opacity:.55;
+    letter-spacing:.5px;
+  }
+
+  .hero-wrap{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:1.5rem 1.5rem 2.5rem;
+    position:relative;
+  }
+  .hero-title{
+    font-family:'Rakkas',serif;
+    font-size:clamp(1.8rem,4vw,2.7rem);
+    text-align:center;
+    margin-bottom:.6rem;
+    color:var(--sand);
+  }
+  .hero-title span{color:var(--gold)}
+  .hero-sub{
+    font-size:.95rem;
+    color:var(--sand);
+    opacity:.62;
+    text-align:center;
+    margin-bottom:3rem;
+    max-width:440px;
+    line-height:1.9;
+  }
+
+  .gates{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    width:100%;
+    max-width:920px;
+    position:relative;
+  }
+  .seam{
+    position:absolute;
+    top:-34px;
+    left:50%;
+    transform:translateX(-50%);
+    width:60px;
+    height:60px;
+    z-index:6;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .seam svg{
+    width:100%;height:100%;
+    animation:spin 22s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .gate{
+    position:relative;
+    background:var(--ink-2);
+    border:1px solid var(--line);
+    border-top-left-radius:120px;
+    border-top-right-radius:120px;
+    padding:3.6rem 2rem 2.4rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    text-decoration:none;
+    color:var(--sand);
+    transition:transform .35s ease, background .35s ease, border-color .35s ease;
+    overflow:hidden;
+  }
+  .gate:first-child{border-left:none;margin-left:1px}
+  .gate:last-child{border-right:none}
+  .gate::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 50% 0%, rgba(201,162,75,.10), transparent 60%);
+    opacity:0;
+    transition:opacity .35s ease;
+  }
+  .gate:hover{transform:translateY(-6px);border-color:rgba(201,162,75,.4)}
+  .gate:hover::before{opacity:1}
+  .gate-icon{
+    width:52px;height:52px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:1.3rem;
+    font-size:1.5rem;
+    position:relative;z-index:2;
+  }
+  .gate.daleel .gate-icon{background:rgba(201,162,75,.14);color:var(--gold)}
+  .gate.athar .gate-icon{background:rgba(184,92,53,.16);color:var(--clay)}
+  .gate-name{
+    font-family:'Rakkas',serif;
+    font-size:1.5rem;
+    margin-bottom:.5rem;
+    position:relative;z-index:2;
+  }
+  .gate-desc{
+    font-size:.85rem;
+    opacity:.6;
+    line-height:1.8;
+    max-width:230px;
+    margin-bottom:1.6rem;
+    position:relative;z-index:2;
+  }
+  .gate-cta{
+    font-size:.82rem;
+    font-weight:500;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:.6rem 1.4rem;
+    border-radius:30px;
+    border:1px solid rgba(244,238,221,.28);
+    position:relative;z-index:2;
+    transition:background .25s ease, border-color .25s ease;
+  }
+  .gate.daleel .gate-cta{color:var(--gold);border-color:rgba(201,162,75,.4)}
+  .gate.athar .gate-cta{color:var(--clay);border-color:rgba(184,92,53,.45)}
+  .gate:hover .gate-cta{background:rgba(244,238,221,.06)}
+  .gate-cta i{transition:transform .25s ease}
+  .gate:hover .gate-cta i{transform:translateX(-3px)}
+
+  .horizon{
+    width:100%;
+    max-width:920px;
+    height:26px;
+    margin-top:-1px;
+    position:relative;
+  }
+  .horizon svg{width:100%;height:100%;display:block}
+  .wave{animation:drift 9s ease-in-out infinite}
+  @keyframes drift{0%,100%{transform:translateX(0)}50%{transform:translateX(-14px)}}
+
+  footer{
+    text-align:center;
+    padding:1.4rem;
+    font-size:.75rem;
+    color:var(--sand);
+    opacity:.4;
+    position:relative;z-index:5;
+  }
+
+  @media(max-width:760px){
+    .gates{grid-template-columns:1fr;max-width:380px;gap:1.4rem}
+    .gate{border-radius:120px 120px 16px 16px !important;border:1px solid var(--line) !important;margin:0 !important}
+    .seam{display:none}
+    .horizon{display:none}
+    .hero-title{font-size:1.6rem}
+    .hero-sub{margin-bottom:2rem}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="brand"><span class="dot"></span>١ صفوى</div>
+    <div class="tagline">مدينة صفوى الرقمية</div>
+  </div>
+
+  <div class="hero-wrap">
+    <h1 class="hero-title">إلى <span>أين</span> تريد الذهاب؟</h1>
+    <p class="hero-sub">بوابتان لمدينة واحدة — دليل يعرّفك بها، ومجلس يحتفي بأبنائها المنجزين</p>
+
+    <div style="position:relative;width:100%;max-width:920px">
+      <div class="seam">
+        <svg viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="46" stroke="#C9A24B" stroke-width="1.5" opacity="0.55"/>
+          <path d="M50 8 L56 46 L50 92 L44 46 Z" fill="#C9A24B" opacity="0.85"/>
+          <circle cx="50" cy="50" r="4" fill="#F4EEDD"/>
+        </svg>
+      </div>
+
+      <div class="gates">
+        <a class="gate daleel" href="https://daleel.1safwa.com">
+          <div class="gate-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 2C8 2 5 5.5 5 9.5c0 5 7 12.5 7 12.5s7-7.5 7-12.5C19 5.5 16 2 12 2z"/>
+              <circle cx="12" cy="9.5" r="2.3"/>
+            </svg>
+          </div>
+          <div class="gate-name">دليل صفوى</div>
+          <div class="gate-desc">كل ما تحتاج معرفته عن المدينة — أماكنها، خدماتها، ووجهاتها</div>
+          <div class="gate-cta">دخول <i>←</i></div>
+        </a>
+
+        <a class="gate athar" href="https://athar.1safwa.com">
+          <div class="gate-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 2l2.8 6.3L21 9.2l-5 4.6L17.2 21 12 17.5 6.8 21 8 13.8l-5-4.6 6.2-.9z"/>
+            </svg>
+          </div>
+          <div class="gate-name">أثر<span style="color:var(--clay)">+</span></div>
+          <div class="gate-desc">مبادرة تكريم الطاقات الشابة المنجزة من أبناء صفوى</div>
+          <div class="gate-cta">دخول <i>←</i></div>
+        </a>
+      </div>
+    </div>
+
+    <div class="horizon">
+      <svg viewBox="0 0 920 26" preserveAspectRatio="none">
+        <path class="wave" d="M0 14 Q30 4 60 14 T120 14 T180 14 T240 14 T300 14 T360 14 T420 14 T480 14 T540 14 T600 14 T660 14 T720 14 T780 14 T840 14 T900 14"
+          stroke="#C9A24B" stroke-width="1" fill="none" opacity="0.35"/>
+      </svg>
+    </div>
+  </div>
+
+  <footer>١٤٤٧ هـ — ١ صفوى</footer>
+
+</body>
+</html>
